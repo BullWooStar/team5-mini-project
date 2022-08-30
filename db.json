@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "email": "guswowh@guswowh.com",
+      "password": "$2a$10$TKNJ/9l58RYZln1HSqRNhe.eGU6Kbl4JqOfUvLc9NBeQgoSIz7bXm",
+      "id": 1,
+      "age": "30",
+      "job": "무직"
+    },
+    {
+      "email": "guswowh88@guswowh88.com",
+      "password": "$2a$10$yxvwYGkKVAjHxaqPUuGxUekEA1FZkB7MSgezlevbAStLuf5oEmomC",
+      "id": 2,
+      "age": "30",
+      "job": "직장인"
+    },
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$St7Vr5zyJLyr7f9zY.ylyOxpm92heW8V1XmSDzGR15yZEUHJQ7eUu",
+      "id": 3,
+      "age": "20",
+      "job": "직장인"
+    },
+    {
+      "email": "guswowh88@gmail.com",
+      "password": "$2a$10$ZgmMj3IVegwuhAFnrfft4OyJpQr3tWEfoPOJNPi2qpbs0IRd5qPKW",
+      "id": 4,
+      "age": "30",
+      "job": "직장인"
+    },
+    {
+      "email": "test11@test.com",
+      "password": "$2a$10$gL8AYhj/Uajf7jVTWvvRNuqAsa5wD0ZyH2w0OHndOWtrV9WBnjlpu",
+      "id": 5,
+      "age": "30",
+      "job": "직장인"
+    }
+  ]
+}
