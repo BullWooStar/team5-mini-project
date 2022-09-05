@@ -1,16 +1,8 @@
 import React, { useEffect } from "react";
 import Card from "../../components/UI/Card";
 import Loading from "../../components/UI/Loading";
-import styled from "styled-components";
 import { asynPromotionFetch, getPromotionData } from "../../store/slices/promotion-product-slice";
 import { useDispatch, useSelector } from "react-redux";
-
-const TitleArea = styled.div`
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 20rem;
-`;
 
 function PromotionPage() {
   const dispatch = useDispatch()
@@ -28,11 +20,7 @@ function PromotionPage() {
   } 
   return  (
     <>
-    <TitleArea>
-      <h2>
-        프로모션
-      </h2>
-    </TitleArea>
+      <h2>프로모션</h2>
 
     <div>
       {products.map((item) => (
