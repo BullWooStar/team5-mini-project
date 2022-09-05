@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../../components/UI/Card";
-import NavBar from "../../components/NavBar";
-import { DUMMY_DATA } from "../../utils/constants";
+import Loading from "../../components/UI/Loading";
 import styled from "styled-components";
+import { asynPromotionFetch, getPromotionData } from "../../store/slices/promotion-product-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 const TitleArea = styled.div`
   left: 0;
@@ -12,6 +13,19 @@ const TitleArea = styled.div`
 `;
 
 function PromotionPage() {
+  const dispatch = useDispatch()
+  const { products, loading } = useSelector(getPromotionData) 
+  useEffect(() => {
+    dispatch(asynPromotionFetch())
+  }, [])
+
+  if(loading) {
+    return (
+    <>
+      <Loading />
+    </>
+    )
+  } 
   return  (
     <>
     <TitleArea>
@@ -21,11 +35,10 @@ function PromotionPage() {
     </TitleArea>
 
     <div>
-      {DUMMY_DATA.map((item) => (
+      {products.map((item) => (
         <Card key={item.id} product={item} />
       ))}
     </div>
-    <NavBar />
     </>
     )
 }
