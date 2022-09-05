@@ -150,4 +150,7 @@ const DUMMY_DATA = [
     age: 20,
   },
 ];
-export { DUMMY_DATA };
+
+const CART_URL = "/cart";
+
+export { DUMMY_DATA, CART_URL };

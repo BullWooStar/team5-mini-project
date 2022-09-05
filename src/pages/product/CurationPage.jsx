@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import Card from "../../components/UI/Card";
 import { DUMMY_DATA } from "../../utils/constants";
@@ -13,7 +12,7 @@ const TitleArea = styled.div`
 `;
 const UserName = styled.span`
   color: ${(props) => props.theme.palette.purple};
-`
+`;
 
 const CardContainer = styled.div`
   ${(props) => props.theme.common.flexCenter}
@@ -42,34 +41,34 @@ const CardInfoText = styled.p`
 `;
 
 let totalAmount = [...DUMMY_DATA].reduce((acc, cur) => {
-  return acc + cur.amount
-}, 0)
+  return acc + cur.amount;
+}, 0);
 
 function CurationPage() {
   return (
-  <>
-  <Header />
-  <TitleArea>
-    <h2>
-      <UserName>{'user.name'}</UserName>님 반갑습니다.
-    </h2>
-  </TitleArea>
-  <CardContainer>
-    <CardInfoText>신청가능한 대출 상품 종합</CardInfoText>
-    <CardAmountText>{`${totalAmount.toLocaleString('ko-KR')} 원`}</CardAmountText>
-  </CardContainer>
+    <>
+      <TitleArea>
+        <h2>
+          <UserName>{"user.name"}</UserName>님 반갑습니다.
+        </h2>
+      </TitleArea>
+      <CardContainer>
+        <CardInfoText>신청가능한 대출 상품 종합</CardInfoText>
+        <CardAmountText>{`${totalAmount.toLocaleString(
+          "ko-KR"
+        )} 원`}</CardAmountText>
+      </CardContainer>
 
-  <div>
-    <TitleArea>
-      <h3>맞춤상품</h3>
-    </TitleArea>
-    {DUMMY_DATA.map((item) => (
-      <Card key={item.id} product={item} />
-    ))}
-  </div>
-  <NavBar />
-  </>
-  )
+      <div>
+        <TitleArea>
+          <h3>맞춤상품</h3>
+        </TitleArea>
+        {DUMMY_DATA.map((item) => (
+          <Card key={item.id} product={item} />
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default CurationPage;

@@ -20,7 +20,7 @@ function SignUpPage() {
     {"UNIMPLOYED": "무직"},
     {"BUSINESS": "자영업자"}
   ]
-  console.log(posts?.data === undefined)
+  
   const [userInput, setUserInput] = useState({username:'', name: '', password:'', age:'', job:''})
   const pageName = useRef("users")
   const userAge = useRef('나이')

@@ -3,17 +3,27 @@ import axios from "axios";
 
 const getSearchedProduct = createAsyncThunk(
   "searchedProductSlice/getAllProduct",
-  async () => {
-    const data = await axios.get("url");
-    return data.value;
+  async (payload) => {
+    const data = await axios.get(`http://www.needmoney.ml/products/${payload}`);
+    return data.data;
   }
 );
 
 const searchedProductSlice = createSlice({
   name: "searchedProductSlice",
   initialState: {
-    data: [],
+    initialData: [],
+    filteredData: [],
     isLoading: false,
+    isSearched: false,
+  },
+  reducers: {
+    updateSearedFilteredProduct(state, action) {
+      state.filteredData = action.payload;
+    },
+    changeIsSearched(state) {
+      state.isSearched = true;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getSearchedProduct.pending, (state) => {
@@ -21,7 +31,8 @@ const searchedProductSlice = createSlice({
     });
     builder.addCase(getSearchedProduct.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.data = action.payload;
+      state.initialData = action.payload;
+      state.filteredData = action.payload;
     });
     builder.addCase(getSearchedProduct.rejected, (state) => {
       state.isLoading = false;
@@ -32,3 +43,4 @@ const searchedProductSlice = createSlice({
 
 export default searchedProductSlice;
 export { getSearchedProduct };
+export const searchedProductActions = searchedProductSlice.actions;

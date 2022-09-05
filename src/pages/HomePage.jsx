@@ -1,35 +1,62 @@
 import React from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import Button from "../components/UI/Button";
 import styled from "styled-components";
 
 const HomepageContainer = styled.div`
   width: 100%;
-  position: relative;
-`
+  ${(props) => props.theme.common.flexColumnStart}
+  margin: 0 auto;
+`;
 const HomepageLogo = styled.div`
-  width: 230px;
-  height: 260px;
-  background-color: #8A9CF9;
-
-  display: block;
-  margin: 10% auto;
-  
-`
+  margin-top: 10rem;
+  ${(props) => props.theme.common.flexColumnStart}
+  img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+  }
+  span {
+    color: ${(props) => props.theme.palette.purple};
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: "Roboto", sans-serif;
+  }
+`;
 const HomepageButton = styled.div`
-  margin-top: 5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+  margin-top: 7rem;
+`;
+
+const LoginButton = styled.div`
+  margin-bottom: 0.5rem;
+`;
+const SignUpButton = styled.div`
+  button {
+    color: ${(props) => props.theme.palette.purple};
+  }
+`;
+
 function HomePage() {
   const navigate = useNavigate();
 
-  return( 
+  return (
     <HomepageContainer>
-      <HomepageLogo></HomepageLogo>
-      <HomepageButton><Button onClick={() => navigate("/login")}/></HomepageButton>
-      <HomepageButton><Button onClick={() => navigate("/signup")}/></HomepageButton>
+      <HomepageLogo>
+        <img src="/images/home_logo.png" alt="Logo" />
+        <span>NEEDMONEY</span>
+      </HomepageLogo>
+      <HomepageButton>
+        <LoginButton>
+          <Button middleWidth onClick={() => navigate("/login")}>
+            로그인
+          </Button>
+        </LoginButton>
+        <SignUpButton>
+          <Button white onClick={() => navigate("/signup")}>
+            회원가입
+          </Button>
+        </SignUpButton>
+      </HomepageButton>
     </HomepageContainer>
   );
 }

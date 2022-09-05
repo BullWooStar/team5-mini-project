@@ -8,7 +8,8 @@ export const NavContainer = styled.div`
     align-items: center;
     justify-content: space-around;
     border-radius: 20px 20px 0 0;
-    position: relative;
+    position: fixed;
+    bottom: 0;
 
 `
 export const NavButton = styled.div`

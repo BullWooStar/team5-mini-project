@@ -13,9 +13,12 @@ export const HeaderWrap = styled.div`
   font-size: 25px;
 `;
 export const HeaderLogo = styled.div`
-  color: #000;
+  color: ${(props) => props.theme.palette.purple};
   cursor: pointer;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+  padding: 1rem;
+  font-weight: 900;
+  font-family: "Roboto", sans-serif;
 `;
 export const HeaderUl = styled.div`
   color: #000;
@@ -30,6 +33,14 @@ export const HeaderUl = styled.div`
 `;
 export const HeaderLi = styled.div`
   margin-right: 0.5rem;
+`;
+
+export const HambugerMenu = styled.div`
+  margin-top: 0.4rem;
+`;
+
+export const CloseMenuBtn = styled.div`
+  margin-top: 0.4rem;
 `;
 
 export const CartArea = styled.div`

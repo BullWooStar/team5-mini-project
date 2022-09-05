@@ -44,6 +44,10 @@ const EmptyCart = styled.div`
   }
 `;
 
+const CartItemList = styled.div`
+  margin-bottom: 4rem;
+`;
+
 function Cart() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -85,7 +89,7 @@ function Cart() {
             <BtnArea>
               <ClearAllBtn onClick={clearCartHandler}>전체 삭제</ClearAllBtn>
             </BtnArea>
-            <div>
+            <CartItemList>
               {cart.cartItems &&
                 cart.cartItems.map((item) => (
                   <div key={item.id}>
@@ -95,10 +99,10 @@ function Cart() {
                     />
                   </div>
                 ))}
-            </div>
             <Button middleWidth onClick={openModal}>
               신청하기
             </Button>
+            </CartItemList>
           </div>
         )}
         <Modal

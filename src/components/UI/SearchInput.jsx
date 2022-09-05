@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import theme from "../styles/theme";
+import theme from "../../styles/theme";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { searchedProductActions } from "../../store/slices/searched-product-slice";
 
-import { getSearchedProduct } from "../store/slices/searched-product-slice";
-import { shownProductActions } from "../store/slices/shown-product-slice";
+import { getSearchedProduct } from "../../store/slices/searched-product-slice";
 
 import { GoSearch } from "react-icons/go";
 
@@ -27,28 +27,15 @@ const SearchBar = styled.input`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
 
-const TitleArea = styled.div`
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 20rem;
-  font-size: 18px;
-`;
-
 function SearchInput() {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState(null);
 
-  const searchedProducts = useSelector((state) => {
-    return state.searchedProduct.data;
-  });
-
   const searchHandler = (e) => {
     e.preventDefault();
     dispatch(getSearchedProduct(inputValue));
-    dispatch(shownProductActions.updateShownSearchedProduct(searchedProducts));
-    dispatch(shownProductActions.changeIsSearched());
+    dispatch(searchedProductActions.changeIsSearched());
   };
 
   const inputValueHandler = (e) => {
@@ -57,9 +44,8 @@ function SearchInput() {
 
   return (
     <div>
-      <TitleArea>
-        <h2>상품검색</h2>
-      </TitleArea>
+      <h2>상품검색</h2>
+
       <SearchForm onSubmit={searchHandler}>
         <SearchBar
           type="text"

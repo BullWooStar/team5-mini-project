@@ -2,30 +2,30 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const asynPromotionFetch = createAsyncThunk(
-  'promotion/asynPromotionFetch',
+  "promotion/asynPromotionFetch",
   async () => {
-    const response = await axios.get('URL')
-    return response
+    const response = await axios.get("URL");
+    return response;
   }
-)
+);
 
 const PromotionProductSlice = createSlice({
-  name: 'promotion',
+  name: "promotion",
   initialState: {
-    products: []
+    products: [],
   },
   extraReducers: (builder) => {
     builder.addCase(asynPromotionFetch.pending, () => {
-      console.log('Loading')
-    })
+      console.log("Loading");
+    });
     builder.addCase(asynPromotionFetch.fulfilled, (state, { payload }) => {
-      state.products = payload
-    })
+      state.products = payload;
+    });
     builder.addCase(asynPromotionFetch.rejected, () => {
-      console.log('Error')
-    })
-  }
-})
+      console.log("Error");
+    });
+  },
+});
 
-export default PromotionProductSlice.reducer
-export const getPromotionData = (state) => state.promotion
+export default PromotionProductSlice.reducer;
+export const getPromotionData = (state) => state.promotion;

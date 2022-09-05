@@ -3,6 +3,7 @@ import { addToCart } from "../../../store/slices/cart-slice";
 import * as S from "./style";
 import { IoMdAddCircle, IoMdRemoveCircle } from "react-icons/io";
 import { useLocation } from "react-router";
+import { CART_URL } from "../../../utils/constants";
 
 function Card({ product, onRemove }) {
   const dispatch = useDispatch();
@@ -16,16 +17,14 @@ function Card({ product, onRemove }) {
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-  const CART_URL = "/cart";
-
-  const cartItemAddHandler = (product) => {
-    dispatch(addToCart({ ...product, cartQuantity: 1 }));
+  const cartItemAddHandler = () => {
+    dispatch(addToCart({ ...product }));
   };
 
   return (
     <S.CardContainer>
       {location !== CART_URL ? (
-        <S.CardCartBtn onClick={() => cartItemAddHandler(product)}>
+        <S.CardCartBtn onClick={cartItemAddHandler}>
           <IoMdAddCircle size="1.2rem" color="#6B23E0" />
         </S.CardCartBtn>
       ) : (
@@ -33,9 +32,7 @@ function Card({ product, onRemove }) {
           <IoMdRemoveCircle size="1.2rem" color="#6B23E0" />
         </S.CardCartBtn>
       )}
-
       <S.CardAgencyText>{product.agency}</S.CardAgencyText>
-
       <S.CardMainWrapper>
         <S.CardMainTitle>{product.name}</S.CardMainTitle>
         <S.CardAmountText>{`${amount} 원`}</S.CardAmountText>
