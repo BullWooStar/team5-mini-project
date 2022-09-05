@@ -19,8 +19,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (cookies["access-token"] === 'undefined' || cookies["access-token"] === undefined) {} else {
-      // console.log(토큰 유효성 검사로 처리)
-      navigate('/')
+      navigate('/curation')
     }
   }, [cookies["access-token"]])
 
