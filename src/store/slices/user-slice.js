@@ -9,9 +9,13 @@ export const doPost = createAsyncThunk(
   async (userData) => {
     const [ userInput, pageName ] = userData
     try {
-      const response = await axios.post(`http://localhost:8000/${pageName}`, userInput)
-      return response.data
+      const response = await axios.post(`http://www.needmoney.ml/${pageName}`, userInput)
+      const data = response.data
+      const authorization = response.headers.authorization
+      // console.log(response)
+      return { data, authorization }
     } catch (e) {
+      console.log(e)
       return { errorMessage: e.response.data }
     }
 })
@@ -33,13 +37,7 @@ export const usersSlice = createSlice({
     });
     builder.addCase(doPost.fulfilled, (state, action) => {
       state.loading = 'succeeded';
-      if (action.payload.accessToken) {
-        console.log("토큰")
-        state.posts = action.payload;
-      }
-      if (action.payload.errorMessage) {
-        state.error = action.payload;
-      }
+      state.posts = action.payload;
     });
     builder.addCase(doPost.rejected, (state) => {
       state.loading = 'failed';

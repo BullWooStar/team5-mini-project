@@ -14,19 +14,21 @@ function LoginPage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    setCookie('access-token', posts?.accessToken, {path:'/'})
-  }, [posts])
+    setCookie('access-token', posts?.authorization, {path:'/'})
+  }, [posts?.data])
 
   useEffect(() => {
     if (cookies["access-token"] === 'undefined' || cookies["access-token"] === undefined) {} else {
       // console.log(토큰 유효성 검사로 처리)
-      // navigate('/')
+      navigate('/')
     }
   }, [cookies["access-token"]])
+
+  
   
   useEffect(() => {
-    Boolean(error) && setErrorMessage({errorMessage: error?.errorMessage})
-  }, [error?.errorMessage])
+    posts?.data.message && setErrorMessage({errorMessage: posts?.data.message})
+  }, [posts?.data.message])
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target
@@ -38,22 +40,6 @@ function LoginPage() {
     dispatch(doPost(userData))
   }
 
-  if (errorMessage.errorMessage === "Email format is invalid") {
-    setErrorMessage({errorMessage: "이메일을 확인해 주세요"})
-  }
-
-  if (errorMessage.errorMessage === "Incorrect password") {
-    setErrorMessage({errorMessage: "비밀번호를 확인해 주세요"})
-  }
-
-  if (errorMessage.errorMessage === "Cannot find user") {
-    setErrorMessage({errorMessage: "가입된 회원이 없습니다."})
-  }
-
-  if (errorMessage.errorMessage === "Email and password are required") {
-    setErrorMessage({errorMessage: "이메일과 비밀번호가 필요합니다."})
-  }
-
   return (
     <S.Container>
       <S.BackBtn onClick={() => navigate(-1)}>
@@ -63,14 +49,13 @@ function LoginPage() {
       <S.Input
         placeholder={'아이디'}
         onChange={inputChangeHandler}
-        name="email" />
+        name="username" />
       <S.Input
         placeholder={'비밀번호'}
         onChange={inputChangeHandler}
         name="password"
         type="password" />
       <S.SignUpBtn onClick={LogIn}>로그인</S.SignUpBtn>
-      {/* {userInput} */}
       <p>{errorMessage.errorMessage}</p>
     </S.Container>
   )
