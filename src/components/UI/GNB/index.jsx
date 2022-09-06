@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 function GNB(props) {
   const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies()
+  
+  useEffect(() => {
+    if (cookies["access-token"] === 'undefined' || cookies["access-token"] === undefined) {} else {
+      navigate('/curation')
+    }
+  }, [cookies["access-token"]])
+
+  const signOut = () => {
+    removeCookie('access-token', {path:'/'})
+  }
+
   return (
     <S.GnbContainer>
       <S.EditWrap>
@@ -17,7 +30,7 @@ function GNB(props) {
         </p>
       </S.EditWrap>
       <S.LogoutWrapper>
-        <S.LogoutBtn>로그아웃</S.LogoutBtn>
+        <S.LogoutBtn onClick={signOut}>로그아웃</S.LogoutBtn>
       </S.LogoutWrapper>
     </S.GnbContainer>
   );

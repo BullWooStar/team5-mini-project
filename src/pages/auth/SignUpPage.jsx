@@ -8,42 +8,31 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import * as S from './style'
 
 function SignUpPage() {
-  const [AgedropdownVisibility, setAgeDropdownVisibility] = React.useState(false);
-  const [JobdropdownVisibility, setJobDropdownVisibility] = React.useState(false);
+  const [agedropdownVisibility, setAgeDropdownVisibility] = useState(false);
+  const [jobdropdownVisibility, setJobDropdownVisibility] = useState(false);
   const [errorMessage, setErrorMessage] = useState({errorMessage: ""})
-  // const { dispatch, posts } = useSignUp()
-  const { dispatch, posts, error } = useUsersContainer()
-  const [cookies, setCookie, removeCookie] = useCookies()
+  const { dispatch, posts } = useUsersContainer()
   const navigate = useNavigate()
-
-  console.log(posts)
-
-  const AgeList = [20, 30, 40, 50, 60]
-  const JobList = [
+  const ageList = [20, 30, 40, 50, 60]
+  const jobList = [
     {"STUDENT": "학생"},
     {"EMPLOYEE": "직장인"},
     {"UNIMPLOYED": "무직"},
     {"BUSINESS": "자영업자"}
   ]
   
+  const [userInput, setUserInput] = useState({username:'', name: '', password:'', age:'', job:''})
+  const pageName = useRef("users")
+  const userAge = useRef('나이')
+  const jobName = useRef('직업')
+  
   useEffect(() => {
-    setCookie('access-token', posts?.accessToken, {path:'/'})
-  }, [posts])
-
-  useEffect(() => {
-    if (cookies["access-token"] === 'undefined') {} else {
+    // setCookie('access-token', posts?.authorization, {path:'/'})
+    if (posts?.data === undefined) {} else {
       navigate('/login')
     }
-  }, [cookies["access-token"]])
-
-  useEffect(() => {
-    Boolean(error) && setErrorMessage({errorMessage: error?.errorMessage})
-  }, [error?.errorMessage])
-
-  const [userInput, setUserInput] = useState({id:'', password:'', age:'', job:''})
-  let pageName = useRef("signup")
-  let userAge = useRef('나이')
-  let jobName = useRef('직업')
+    posts?.data.message && setErrorMessage({errorMessage: posts?.data.message})
+  }, [posts?.data?.message, posts?.data])
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target
@@ -65,18 +54,6 @@ function SignUpPage() {
     dispatch(doPost(userData))
   }
 
-  if (errorMessage.errorMessage === "Email and password are required") {
-    setErrorMessage({errorMessage: "이메일과 비밀번호가 필요합니다"})
-  }
-
-  if (errorMessage.errorMessage === "Email format is invalid") {
-    setErrorMessage({errorMessage: "이메일과 비밀번호가 필요합니다"})
-  }
-
-  if (errorMessage.errorMessage === "Email already exists") {
-    setErrorMessage({errorMessage: "이메일이 이미 존재합니다"})
-  }
-
   return (
     <S.Container>
       <S.BackBtn onClick={() => navigate(-1)}>
@@ -86,24 +63,28 @@ function SignUpPage() {
       <S.Input
         placeholder={'아이디'}
         onChange={inputChangeHandler}
-        name="email" />
+        name="username" />
+      <S.Input
+        placeholder={'이름'}
+        onChange={inputChangeHandler}
+        name="name" />
       <S.Input
         placeholder={'비밀번호'}
         onChange={inputChangeHandler}
         name="password"
         type="password" />
-      <S.Input type={"button"} value={userAge.current} onClick={(e) => setAgeDropdownVisibility(!AgedropdownVisibility)} />
-      <DropDown visibility={AgedropdownVisibility}>
+      <S.Input type={"button"} value={userAge.current} onClick={(e) => setAgeDropdownVisibility(!agedropdownVisibility)} />
+      <DropDown visibility={agedropdownVisibility}>
           <S.Ul>
               {
-                AgeList.map((item, index) => {
+                ageList.map((item, index) => {
                   return (
                     <S.Li key={index}>
                       <S.ListInput
                         type={"button"}
                         onClick={(e) => {
                           inputChangeHandler(e)
-                            setAgeDropdownVisibility(!AgedropdownVisibility)
+                            setAgeDropdownVisibility(!agedropdownVisibility)
                           }
                         }
                         name={"age"}
@@ -114,18 +95,18 @@ function SignUpPage() {
               }
           </S.Ul>
       </DropDown>
-      <S.Input type={"button"} value={jobName.current} onClick={(e) => setJobDropdownVisibility(!JobdropdownVisibility)} />
-      <DropDown visibility={JobdropdownVisibility}>
+      <S.Input type={"button"} value={jobName.current} onClick={(e) => setJobDropdownVisibility(!jobdropdownVisibility)} />
+      <DropDown visibility={jobdropdownVisibility}>
           <S.Ul>
               {
-                JobList.map((item, index) => {
+                jobList.map((item, index) => {
                   return (
                     <S.Li key={index}>
                       <S.ListInput
                         type={"button"}
                         onClick={(e) => {
-                          jobChangeHandler(e)
-                            setJobDropdownVisibility(!JobdropdownVisibility)
+                          jobChangeHandler(e,item)
+                            setJobDropdownVisibility(!jobdropdownVisibility)
                           }
                         }
                         name={"job"}
