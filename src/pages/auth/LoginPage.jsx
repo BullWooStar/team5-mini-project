@@ -17,13 +17,14 @@ function LoginPage() {
     setCookie('access-token', posts?.authorization, {path:'/'})
   }, [posts?.data])
 
+  
+
   useEffect(() => {
+    console.log(cookies)
     if (cookies["access-token"] === 'undefined' || cookies["access-token"] === undefined) {} else {
       navigate('/curation')
     }
   }, [cookies["access-token"]])
-
-  
   
   useEffect(() => {
     posts?.data.message && setErrorMessage({errorMessage: posts?.data.message})
