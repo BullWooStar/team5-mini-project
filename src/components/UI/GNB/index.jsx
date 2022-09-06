@@ -15,6 +15,7 @@ function GNB(props) {
 
   const signOut = () => {
     removeCookie('access-token', {path:'/'})
+    navigate(0)
   }
 
   return (
