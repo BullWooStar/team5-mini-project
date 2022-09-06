@@ -74,7 +74,7 @@ function SignUpPage() {
         onChange={inputChangeHandler}
         name="password"
         type="password" />
-      <S.Input type={"button"} value={userAge.current} onClick={(e) => setAgeDropdownVisibility(!agedropdownVisibility)} />
+      <S.Input type={"button"} value={userAge.current} onClick={(e) => setAgeDropdownVisibility(!agedropdownVisibility)} onBlur={()=> setAgeDropdownVisibility(false)}/>
       <DropDown visibility={agedropdownVisibility}>
           <S.Ul>
               {
@@ -96,7 +96,7 @@ function SignUpPage() {
               }
           </S.Ul>
       </DropDown>
-      <S.Input type={"button"} value={jobName.current} onClick={(e) => setJobDropdownVisibility(!jobdropdownVisibility)} />
+      <S.Input type={"button"} value={jobName.current} onClick={(e) => setJobDropdownVisibility(!jobdropdownVisibility) } onBlur={()=> setJobDropdownVisibility(false)} />
       <DropDown visibility={jobdropdownVisibility}>
           <S.Ul>
               {

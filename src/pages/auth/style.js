@@ -56,12 +56,16 @@ export const Select = styled.select`
 
 export const Ul = styled.ul`
   width: 100%;
+  height: 9rem;
   border: 1px solid #ECECEC;
-  overflow: hidden;
+  overflow: auto;
   border-radius: 8px;
   box-sizing: border-box;
   margin-top: -8px;
   padding: 0;
+  z-index: 10;
+  position: absolute;
+  background-color: #fff;
 `
 export const Li = styled.li`
   list-style: none;
