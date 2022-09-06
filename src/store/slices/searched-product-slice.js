@@ -24,6 +24,9 @@ const searchedProductSlice = createSlice({
     changeIsSearched(state) {
       state.isSearched = true;
     },
+    backtoAllProduct(state) {
+      state.isSearched = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getSearchedProduct.pending, (state) => {
