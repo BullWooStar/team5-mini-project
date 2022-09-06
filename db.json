@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$ycUy29sl9SDAqsTNqjbarOuFDaFzfRBtB1qwEx6A5sFpg2ezghod6",
+      "id": 1,
+      "age": "20",
+      "job": "STUDENT"
+    },
+    {
+      "email": "asdf@test.com",
+      "password": "$2a$10$z3Aia9q8JJD74HGrjOjsI.9BwaRsJnlCA5LHnA1hdl53MUGJ3swK2",
+      "id": 2,
+      "age": "20",
+      "job": "STUDENT"
+    },
+    {
+      "email": "adsf@tset.com",
+      "password": "$2a$10$Wka4ZMofeqprJ0tessbgQO.4YZuCqh62dE6VNMXRRb.aL12Hnh.Ju",
+      "id": 3,
+      "age": "20",
+      "job": "EMPLOYEE"
+    },
+    {
+      "email": "test22@test.com",
+      "password": "$2a$10$i4JRCpKsnu1XLAzm9VbvfO5L5Z9wJvYAFcFMR3MLuiMQMPJTDBslW",
+      "id": 4,
+      "age": "20",
+      "job": "STUDENT"
+    },
+    {
+      "email": "guswowh88@test.com",
+      "password": "$2a$10$dSSBFeuOK1nnwCs00RWjw./XhQq744VLw7aEUYqmd5/a.91rD.QKi",
+      "id": 5,
+      "age": "20",
+      "job": "EMPLOYEE"
+    },
+    {
+      "email": "test33@test.com",
+      "password": "$2a$10$.nCXnc9sN/oSSwagAcQyS.4xfHDVD/fDtiNApsskQKg6oOOaZeNRW",
+      "id": 6,
+      "age": "20",
+      "job": "EMPLOYEE"
+    }
+  ]
+}
