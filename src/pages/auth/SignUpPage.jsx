@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import DropDown from '../../components/DropDown'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import * as S from './style'
+import Button from '../../components/UI/Button';
 
 function SignUpPage() {
   const [agedropdownVisibility, setAgeDropdownVisibility] = useState(false);
@@ -119,7 +120,9 @@ function SignUpPage() {
           </S.Ul>
       </DropDown>
       <p>{errorMessage.errorMessage}</p>
-      <S.SignUpBtn onClick={SingUp}>회원가입</S.SignUpBtn>
+      <S.BtnContainer>
+        <Button middleWidth onClick={SingUp}>회원가입</Button>
+      </S.BtnContainer>
     </S.Container>
   )
 }

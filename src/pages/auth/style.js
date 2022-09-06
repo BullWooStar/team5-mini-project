@@ -88,16 +88,9 @@ export const ListInput = styled.input`
   }
 `
 
-export const SignUpBtn = styled.button`
+export const BtnContainer = styled.div`
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 86px;
-  background: ${mainColor};
-  border-radius: 10px 10px 0px 0px;
-  color: #fff;
-  font-size: 2rem;
+  margin-top: 2rem;
 `
 
 export const BackBtn = styled.div`
