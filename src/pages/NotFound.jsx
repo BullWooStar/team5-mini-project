@@ -23,6 +23,7 @@ const NotFoundContent = styled.div`
   font: bold;
   font-size: 20px;
   margin-top: 40px;
+  text-align: center;
 `;
 
 function NotFound() {
