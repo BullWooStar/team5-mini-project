@@ -56,12 +56,16 @@ export const Select = styled.select`
 
 export const Ul = styled.ul`
   width: 100%;
+  height: 9rem;
   border: 1px solid #ECECEC;
-  overflow: hidden;
+  overflow: auto;
   border-radius: 8px;
   box-sizing: border-box;
   margin-top: -8px;
   padding: 0;
+  z-index: 10;
+  position: absolute;
+  background-color: #fff;
 `
 export const Li = styled.li`
   list-style: none;
@@ -88,16 +92,9 @@ export const ListInput = styled.input`
   }
 `
 
-export const SignUpBtn = styled.button`
+export const BtnContainer = styled.div`
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 86px;
-  background: ${mainColor};
-  border-radius: 10px 10px 0px 0px;
-  color: #fff;
-  font-size: 2rem;
+  margin-top: 2rem;
 `
 
 export const BackBtn = styled.div`

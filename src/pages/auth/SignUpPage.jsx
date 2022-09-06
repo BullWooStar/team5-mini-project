@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import DropDown from '../../components/DropDown'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import * as S from './style'
+import Button from '../../components/UI/Button';
 
 function SignUpPage() {
   const [agedropdownVisibility, setAgeDropdownVisibility] = useState(false);
@@ -73,7 +74,7 @@ function SignUpPage() {
         onChange={inputChangeHandler}
         name="password"
         type="password" />
-      <S.Input type={"button"} value={userAge.current} onClick={(e) => setAgeDropdownVisibility(!agedropdownVisibility)} />
+      <S.Input type={"button"} value={userAge.current} onClick={(e) => setAgeDropdownVisibility(!agedropdownVisibility)} onBlur={()=> setAgeDropdownVisibility(false)}/>
       <DropDown visibility={agedropdownVisibility}>
           <S.Ul>
               {
@@ -95,7 +96,7 @@ function SignUpPage() {
               }
           </S.Ul>
       </DropDown>
-      <S.Input type={"button"} value={jobName.current} onClick={(e) => setJobDropdownVisibility(!jobdropdownVisibility)} />
+      <S.Input type={"button"} value={jobName.current} onClick={(e) => setJobDropdownVisibility(!jobdropdownVisibility) } onBlur={()=> setJobDropdownVisibility(false)} />
       <DropDown visibility={jobdropdownVisibility}>
           <S.Ul>
               {
@@ -119,7 +120,9 @@ function SignUpPage() {
           </S.Ul>
       </DropDown>
       <p>{errorMessage.errorMessage}</p>
-      <S.SignUpBtn onClick={SingUp}>회원가입</S.SignUpBtn>
+      <S.BtnContainer>
+        <Button middleWidth onClick={SingUp}>회원가입</Button>
+      </S.BtnContainer>
     </S.Container>
   )
 }
