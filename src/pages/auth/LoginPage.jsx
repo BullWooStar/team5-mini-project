@@ -59,8 +59,6 @@ function LoginPage() {
       <S.BtnContainer>
         <Button middleWidth onClick={LogIn}>로그인</Button>
       </S.BtnContainer>
-      
-      {/* <S.SignUpBtn onClick={LogIn}>로그인</S.SignUpBtn> */}
       <p>{errorMessage.errorMessage}</p>
     </S.Container>
   )
