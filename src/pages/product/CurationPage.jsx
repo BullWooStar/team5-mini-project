@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../../components/UI/Card";
-import { DUMMY_DATA } from "../../utils/constants";
+import Loading from "../../components/UI/Loading";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { asynCurationFetch, asynUserFetch, getCurationData } from "../../store/slices/curation-product-slice";
+import { useCookies } from "react-cookie";
 
 const UserName = styled.span`
   color: ${(props) => props.theme.palette.purple};
@@ -39,14 +42,31 @@ const CardInfoText = styled.p`
 
 
 function CurationPage() {
-  let totalAmount = [...DUMMY_DATA].reduce((acc, cur) => {
+  const dispatch = useDispatch()
+  const { user, products, loading } = useSelector(getCurationData)
+  const [cookies] = useCookies()
+  const cookieValue = Object.values(cookies)
+
+  useEffect(() => {
+    dispatch(asynUserFetch(cookieValue[0]))
+    dispatch(asynCurationFetch(cookieValue[0]))
+  }, [])
+
+  let totalAmount = [...products].reduce((acc, cur) => {
     return acc + cur.amount;
   }, 0);
 
+  if(loading) {
+    return (
+    <>
+      <Loading />
+    </>
+    )
+  } 
   return (
     <>
         <h2>
-          <UserName>{"user.name"}</UserName>님 반갑습니다.
+          <UserName>{user.name}</UserName>님 반갑습니다.
         </h2>
       <CardContainer>
         <CardInfoText>신청가능한 대출 상품 종합</CardInfoText>
@@ -58,7 +78,7 @@ function CurationPage() {
 
       <div>
           <h3>맞춤상품</h3>
-        {DUMMY_DATA.map((item) => (
+        {products.map((item) => (
           <Card key={item.id} product={item} />
         ))}
       </div>
