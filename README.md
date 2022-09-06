@@ -15,7 +15,7 @@
 - 프론트엔드 팀레포지토리 깃헙주소 : https://github.com/BullWooStar/team5-mini-project
 
 #### 배포 주소
-
+https://fanciful-kheer-a71731.netlify.app/
 
 <br />
 
@@ -121,6 +121,8 @@ https://www.figma.com/file/qDSvNjjgCBk8ez7YzfzGlx?embed_host=notion&kind=&node-i
 백엔드와 함께하는 팀 프로젝트는 처음이라서 우여곡절이 많았습니다. 이번 프로젝트를 통해서 백엔드분들과 소통하는 것을 배운 것 같습니다. 또한 원활한 협업을 위해서는 문서화가 중요하다는 것을 몸소 느꼈습니다. 
 
 #### 최효근
+
+프로젝트 자체만으로 보았을때는 그렇게 어렵지는 않아보였는데 백엔드와의 협업 부분이 어려웠던거 같습니다. 필요한 api를 정리하고 요청하는 부분에서 많은 부분이 공부가 되었습니다. 또한 react와 redux took kit 공부도 많이 되었습니다.
 
 #### 이화정
 
