@@ -145,7 +145,7 @@ function Filter() {
     <div>
       <FaFilter size=".9rem" />
       <span style={{ margin: "2px" }}>필터</span>
-
+      <label htmlFor="job"></label>
       <SelectBox
         id="job"
         onChange={(e) => {

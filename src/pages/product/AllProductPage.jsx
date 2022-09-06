@@ -7,13 +7,22 @@ import SearchInput from "../../components/UI/SearchInput";
 import Filter from "../../components/UI/Filter";
 import Loading from "../../components/UI/Loading";
 
-import { getAllProduct } from "../../store/slices/all-product-slice";
+import {
+  allProductActions,
+  getAllProduct,
+} from "../../store/slices/all-product-slice";
+import Button from "../../components/UI/Button";
+import { searchedProductActions } from "../../store/slices/searched-product-slice";
 
 function AllProductPage() {
   const dispatch = useDispatch();
 
   const isSearched = useSelector((state) => {
     return state.searchedProduct.isSearched;
+  });
+
+  const allProducts = useSelector((state) => {
+    return state.allProduct.initialData;
   });
 
   const filteredAllProducts = useSelector((state) => {
@@ -32,6 +41,11 @@ function AllProductPage() {
     return state.searchedProduct.isLoading;
   });
 
+  const backtoAllProduct = () => {
+    dispatch(allProductActions.updateAllFilteredProduct(allProducts));
+    dispatch(searchedProductActions.backtoAllProduct());
+  };
+
   useEffect(() => {
     dispatch(getAllProduct());
   }, []);
@@ -41,7 +55,19 @@ function AllProductPage() {
       <div>
         <SearchInput />
 
-        {isSearched ? <h2>검색상품</h2> : <h2>전체상품</h2>}
+        {isSearched ? (
+          <div style={{ display: "flex" }}>
+            <h2>검색상품</h2>
+            <Button
+              style={{ height: "25px", margin: "auto 0", marginLeft: "10px" }}
+              onClick={backtoAllProduct}
+            >
+              전체상품으로 돌아가기
+            </Button>
+          </div>
+        ) : (
+          <h2>전체상품</h2>
+        )}
 
         <Filter />
         {isSearched ? (
