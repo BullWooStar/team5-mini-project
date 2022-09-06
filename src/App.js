@@ -15,7 +15,6 @@ import PaymentCompleted from "./pages/product/PaymentCompletedPage";
 import NotFound from "./pages/NotFound";
 import LoginLayout from "./components/LoginLayout";
 import StyleLayout from "./components/UI/StyleLayout";
-import NavBar from "./components/NavBar";
 
 function App() {
   return (

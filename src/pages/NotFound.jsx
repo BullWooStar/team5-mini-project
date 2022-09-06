@@ -1,39 +1,49 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import Button from "../components/UI/Button";
 import styled from "styled-components";
 
 const NotFoundContainer = styled.div`
   width: 100%;
-  position: relative; 
-`
-const NotFoundLogo = styled.div`
-  width: 230px;
-  height: 260px;
-  background-color: #8A9CF9;
-
-  display: block;
-  margin: 10% auto;
-  
-`
-const NotFoundContent = styled.div`
-  color: #6B23E0;
-  font: bold;
-  font-size: 20px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-`
+  flex-direction: column;
+`;
+const NotFoundLogo = styled.div`
+  width: 230px;
+  height: 230px;
+  margin-top: 70px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+const NotFoundContent = styled.div`
+  font: bold;
+  font-size: 20px;
+  margin-top: 40px;
+  text-align: center;
+`;
 
 function NotFound() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  return( 
+  return (
     <NotFoundContainer>
-      <NotFoundLogo></NotFoundLogo>
-      <NotFoundContent>요청하신 페이지를 <br/> 찾을 수 없습니다</NotFoundContent>
-      <Button onClick={() => navigate("/curation")}/>
+      <NotFoundLogo>
+        <img src="./images/404.png" alt="404" />
+      </NotFoundLogo>
+      <NotFoundContent>
+        요청하신 페이지를 <br /> 찾을 수 없습니다
+      </NotFoundContent>
+      <Button
+        style={{ marginTop: "30px" }}
+        middleWidth
+        onClick={() => navigate("/curation")}
+      >
+        돌아가기
+      </Button>
     </NotFoundContainer>
   );
 }
