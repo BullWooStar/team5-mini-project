@@ -1,31 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../../components/UI/Card";
-import NavBar from "../../components/NavBar";
-import { DUMMY_DATA } from "../../utils/constants";
-import styled from "styled-components";
-
-const TitleArea = styled.div`
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 20rem;
-`;
+import Loading from "../../components/UI/Loading";
+import { asynPromotionFetch, getPromotionData } from "../../store/slices/promotion-product-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 function PromotionPage() {
+  const dispatch = useDispatch()
+  const { products, loading } = useSelector(getPromotionData) 
+  useEffect(() => {
+    dispatch(asynPromotionFetch())
+  }, [])
+
+  if(loading) {
+    return (
+    <>
+      <Loading />
+    </>
+    )
+  } 
   return  (
     <>
-    <TitleArea>
-      <h2>
-        프로모션
-      </h2>
-    </TitleArea>
+      <h2>프로모션</h2>
 
     <div>
-      {DUMMY_DATA.map((item) => (
+      {products.map((item) => (
         <Card key={item.id} product={item} />
       ))}
     </div>
-    <NavBar />
     </>
     )
 }

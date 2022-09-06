@@ -8,10 +8,10 @@ function StyleLayout() {
   const pathname = useLocation().pathname;
 
   const headerPath = useMemo(
-    () => ["/allproduct", "/cart", "/curation", "promotion"],
+    () => ["/allproduct", "/cart", "/curation", "/promotion"],
     []
   );
-  const navPath = useMemo(() => ["/curation", "/allproduct", "promotion"], []);
+  const navPath = useMemo(() => ["/curation", "/allproduct", "/promotion"], []);
 
   return (
     <>
