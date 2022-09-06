@@ -12,15 +12,27 @@ export const NavContainer = styled.div`
     bottom: 0;
 
 `
-export const NavButton = styled.div`
+export const NavButton = styled.button`
     font-size: small;
     cursor: pointer;
     align-items: stretch;
     flex-direction: column;
     display: flex;
-    color: green;
+    outline-color: 0;
+    border: 0;
+    background-color: #fff;
+    color: ${props => props.color};
+    &:hover {
+        color: #6B23E0;
+    }
 
 `
 export const NavIcon = styled.div`
-    color: green;
+    margin: auto;
+    color: ${props => props.color};
+    &:hover {
+        color: #6B23E0;
+    }
+
 `
+
