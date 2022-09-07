@@ -5,7 +5,6 @@ const mainColor = theme.palette.purple;
 
 export const Container = styled.div`
   width: 350px;
-  height: 100vh;
   padding: 0 20px;
   margin: 0 auto 0;
 `
@@ -94,7 +93,7 @@ export const ListInput = styled.input`
 
 export const BtnContainer = styled.div`
   position: absolute;
-  margin-top: 2rem;
+  margin-top: 5rem;
 `
 
 export const BackBtn = styled.div`
