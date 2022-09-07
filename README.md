@@ -57,9 +57,10 @@ https://fanciful-kheer-a71731.netlify.app/
 <br />
 
 #### 로그인 / 회원가입
+![스크린샷 2022-09-07 오후 3 52 11](https://user-images.githubusercontent.com/99096272/188809113-a1e396e2-393a-49c2-a468-538f920da867.png)
+![스크린샷 2022-09-07 오후 3 51 52](https://user-images.githubusercontent.com/99096272/188809057-6b65a764-4e4a-4ced-b40d-f56b8a34d2f3.png)
 
-<img width="400" alt="스크린샷 2022-09-06 오후 4 41 48" src="https://user-images.githubusercontent.com/99630188/188576518-69548640-7498-45fb-b800-77b5bcbb4044.png">
-<img width="400" alt="스크린샷 2022-09-06 오후 4 42 29" src="https://user-images.githubusercontent.com/99630188/188576531-98d3603d-916f-4564-b90b-46afd88979c5.png">
+
 
 - 회원가입 후 로그인시 토큰값을 받아와 쿠키에 저장합니다.
 - 로그인이 안됐을시 홈페이지, 로그인, 로그아웃 페이지 이외에는 접근하지 못합니다.
@@ -77,8 +78,6 @@ https://fanciful-kheer-a71731.netlify.app/
 <br />
 
 #### 모든 상품 및 검색 상품
-
-<img width="400" alt="스크린샷 2022-09-06 오후 4 41 48" src="https://user-images.githubusercontent.com/99630188/188578096-f063fe65-3875-4d01-bfc3-44d07436a76f.png">
 
 <img width="500" alt="스크린샷 2022-09-06 오후 4 52 22" src="https://user-images.githubusercontent.com/99630188/188578175-09b8596a-de36-4c1a-8118-cc7416eca338.png">
 
@@ -108,7 +107,7 @@ https://fanciful-kheer-a71731.netlify.app/
 
  <br />
 
-### 🛠 기술 스택
+## 🛠 기술 스택
 - Front 
   - React.js
   - Create React App
@@ -120,9 +119,9 @@ https://fanciful-kheer-a71731.netlify.app/
 
 <br />
 
-### 🌳 프로젝트 기획
+## 🌳 프로젝트 기획
 
-<a href="https://www.figma.com/files/recent?fuid=1120606089959726851
+<a href="https://www.figma.com/file/0p2dpZN4JOwjtmxjuON2SX/5%EC%A1%B0?node-id=0%3A1
 ">와이어프레임</a>
 
 
@@ -133,20 +132,3 @@ https://fanciful-kheer-a71731.netlify.app/
 
 <img width="800" alt="스크린샷 2022-09-06 오후 5 07 42" src="https://user-images.githubusercontent.com/99630188/188581534-6d9e7f75-989d-45c7-8a7a-209dedd10824.png">
 
-<br />
-
-## 팀 프로젝트를 진행하며...
-
-#### 양예진
-
-백엔드와 함께하는 팀 프로젝트는 처음이라서 우여곡절이 많았습니다. 이번 프로젝트를 통해서 백엔드분들과 소통하는 것을 배운 것 같습니다. 또한 원활한 협업을 위해서는 문서화가 중요하다는 것을 몸소 느꼈습니다. 
-
-#### 최효근
-
-프로젝트 자체만으로 보았을때는 그렇게 어렵지는 않아보였는데 백엔드와의 협업 부분이 어려웠던거 같습니다. 필요한 api를 정리하고 요청하는 부분에서 많은 부분이 공부가 되었습니다. 또한 react와 redux took kit 공부도 많이 되었습니다.
-
-#### 이화정
-
-#### 최수연
-
-#### 조현재
