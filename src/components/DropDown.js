@@ -1,10 +1,15 @@
 import React from 'react';
+import styled from "styled-components";
+
+const DropdownContainer = styled.article`
+  position: relative;
+`;
 
 const Dropdown = (props) => {
   return (
-    <article>
+    <DropdownContainer>
       { props.visibility && props.children }
-    </article>
+    </DropdownContainer>
   )
 };
 
