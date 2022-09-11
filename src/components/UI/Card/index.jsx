@@ -19,6 +19,7 @@ function Card({ product, onRemove }) {
 
   const cartItemAddHandler = () => {
     dispatch(addToCart({ ...product }));
+    console.log(product);
   };
 
   return (

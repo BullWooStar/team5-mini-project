@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 import Card from "../../components/UI/Card";
 import SearchInput from "../../components/UI/SearchInput";
@@ -49,6 +50,26 @@ function AllProductPage() {
   useEffect(() => {
     dispatch(getAllProduct());
   }, []);
+
+  const token =
+    "eyJ0eXAiOiJKV1QiLCJyZWdEYXRlIjoxNjYyNDU5Njc5OTI2LCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjozMywidXNlcm5hbWUiOiIxMjMiLCJwYXNzd29yZCI6IiQyYSQxMCRSeGhWTUZnQ29kT0MuYjJUTWxSbUZlMTNua2gya0V0TFBPUzBta0ZyejNrS1B4dXRUZXNDVyIsIm5hbWUiOiIxMjMiLCJqb2IiOiJTVFVERU5UIiwiYWdlIjoyMH0sImlhdCI6MTY2MjQ1MjM3NSwiZXhwIjoxNjYyNDU1OTc1fQ.KFS95pJu4ugGgSXhQJVw75RQodrCMRL5oQaQzxIxhP4";
+
+  // const fetch = async () => {
+  //   const data = await axios.get("http://www.needmoney.ml/user", {
+  //     headers: { Authorization: token },
+  //   });
+  //   console.log(data);
+  //   return data;
+  // };
+
+  fetch("http://www.needmoney.ml/user", {
+    method: "GET",
+    headers: { Authorization: token },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+
+  // fetch();
 
   return (
     <div>
