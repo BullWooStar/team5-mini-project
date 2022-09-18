@@ -6,5 +6,5 @@ export const Layout = styled.main`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10vh;
+  margin-bottom: 5rem;
 `

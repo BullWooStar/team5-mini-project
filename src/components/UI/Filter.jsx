@@ -145,7 +145,7 @@ function Filter() {
     <div>
       <FaFilter size=".9rem" />
       <span style={{ margin: "2px" }}>필터</span>
-      <label htmlFor="job"></label>
+      <label htmlFor="job">직업</label>
       <SelectBox
         id="job"
         onChange={(e) => {
@@ -153,10 +153,10 @@ function Filter() {
         }}
       >
         <SelectOption value="all">모든 직업</SelectOption>
-        <SelectOption value="EMPLOYEE">직장인</SelectOption>
-        <SelectOption value="STUDENT">학생</SelectOption>
-        <SelectOption value="FREELANCER">프리랜서</SelectOption>
-        <SelectOption value="UNEMPLOYED">무직</SelectOption>
+        <SelectOption value="직장인">직장인</SelectOption>
+        <SelectOption value="학생">학생</SelectOption>
+        <SelectOption value="프리랜서">프리랜서</SelectOption>
+        <SelectOption value="무직">무직</SelectOption>
       </SelectBox>
 
       <Button onClick={amountFilterChangeHandler}>

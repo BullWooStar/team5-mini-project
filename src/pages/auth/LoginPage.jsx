@@ -8,6 +8,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import * as S from "./style";
+import Button from "../../components/UI/Button";
 
 function LoginPage() {
   const { dispatch, posts, error } = useUsersContainer();
@@ -64,7 +65,11 @@ function LoginPage() {
         name="password"
         type="password"
       />
-      <S.SignUpBtn onClick={LogIn}>로그인</S.SignUpBtn>
+      <S.BtnContainer>
+        <Button middleWidth onClick={LogIn}>
+          로그인
+        </Button>
+      </S.BtnContainer>
       <p>{errorMessage.errorMessage}</p>
     </S.Container>
   );

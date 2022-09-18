@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { DUMMY_DATA } from "../../utils/constants";
 
 const getAllProduct = createAsyncThunk(
   "allProductSlice/getAllProduct",
   async () => {
-    const data = await axios.get("http://www.needmoney.ml/products");
-    return data.data;
+    // const data = await axios.get("http://www.needmoney.ml/products");
+    return DUMMY_DATA;
   }
 );
 
