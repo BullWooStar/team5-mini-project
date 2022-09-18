@@ -13,30 +13,17 @@ const getSearchedProduct = createAsyncThunk(
 const searchedProductSlice = createSlice({
   name: "searchedProductSlice",
   initialState: {
-    initialData: [],
-    filteredData: [],
+    searchedproductData: [],
     isLoading: false,
-    isSearched: false,
   },
-  reducers: {
-    updateSearedFilteredProduct(state, action) {
-      state.filteredData = action.payload;
-    },
-    changeIsSearched(state) {
-      state.isSearched = true;
-    },
-    backtoAllProduct(state) {
-      state.isSearched = false;
-    },
-  },
+
   extraReducers: (builder) => {
     builder.addCase(getSearchedProduct.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(getSearchedProduct.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.initialData = action.payload;
-      state.filteredData = action.payload;
+      state.searchedproductData = action.payload;
     });
     builder.addCase(getSearchedProduct.rejected, (state) => {
       state.isLoading = false;
@@ -47,4 +34,3 @@ const searchedProductSlice = createSlice({
 
 export default searchedProductSlice;
 export { getSearchedProduct };
-export const searchedProductActions = searchedProductSlice.actions;

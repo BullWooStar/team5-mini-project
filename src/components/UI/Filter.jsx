@@ -2,10 +2,8 @@ import styled from "styled-components";
 import Button from "./Button";
 import theme from "../../styles/theme";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+
 import { FaFilter } from "react-icons/fa";
-import { searchedProductActions } from "../../store/slices/searched-product-slice";
-import { allProductActions } from "../../store/slices/all-product-slice";
 
 const mainColor = theme.palette.purple;
 
@@ -21,124 +19,47 @@ const SelectOption = styled.option`
   background: ${mainColor};
 `;
 
-function Filter() {
-  const dispatch = useDispatch();
-
+function Filter({
+  products,
+  setProducts,
+  isSearched,
+  allProducts,
+  searchedProducts,
+}) {
   const [amountFilter, setAmountFilter] = useState(false);
   const [interestRateFilter, setInterestRateFilter] = useState(false);
 
-  const allProducts = useSelector((state) => {
-    return state.allProduct.initialData;
-  });
-
-  const filteredAllProducts = useSelector((state) => {
-    return state.allProduct.filteredData;
-  });
-
-  const searchedProduct = useSelector((state) => {
-    return state.searchedProduct.initialData;
-  });
-
-  const filteredSearchedProduct = useSelector((state) => {
-    return state.searchedProduct.filteredData;
-  });
-
-  const isSearched = useSelector((state) => {
-    return state.searchedProduct.isSearched;
-  });
-
   const jobFilterChangeHandler = (e) => {
-    if (isSearched) {
-      if (e.target.value === "all") {
-        dispatch(
-          searchedProductActions.updateSearedFilteredProduct(searchedProduct)
-        );
-      } else {
-        dispatch(
-          searchedProductActions.updateSearedFilteredProduct(
-            searchedProduct.filter((product) => e.target.value === product.job)
-          )
-        );
-      }
+    if (e.target.value === "all") {
+      setProducts(isSearched ? searchedProducts : allProducts);
     } else {
-      if (e.target.value === "all") {
-        dispatch(allProductActions.updateAllFilteredProduct(allProducts));
-      } else {
-        dispatch(
-          allProductActions.updateAllFilteredProduct(
-            allProducts.filter((product) => e.target.value === product.job)
-          )
-        );
-      }
+      setProducts(
+        isSearched
+          ? searchedProducts.filter((product) => e.target.value === product.job)
+          : allProducts.filter((product) => e.target.value === product.job)
+      );
     }
   };
 
   const amountFilterChangeHandler = (e) => {
     e.preventDefault();
     setAmountFilter(!amountFilter);
-    if (isSearched) {
-      amountFilter
-        ? dispatch(
-            searchedProductActions.updateSearedFilteredProduct(
-              [...filteredSearchedProduct].sort((a, b) => b.amount - a.amount)
-            )
-          )
-        : dispatch(
-            searchedProductActions.updateSearedFilteredProduct(
-              [...filteredSearchedProduct].sort((a, b) => a.amount - b.amount)
-            )
-          );
-    } else {
-      amountFilter
-        ? dispatch(
-            allProductActions.updateAllFilteredProduct(
-              [...filteredAllProducts].sort((a, b) => b.amount - a.amount)
-            )
-          )
-        : dispatch(
-            allProductActions.updateAllFilteredProduct(
-              [...filteredAllProducts].sort((a, b) => a.amount - b.amount)
-            )
-          );
-    }
+    amountFilter
+      ? setProducts([...products].sort((a, b) => b.amount - a.amount))
+      : setProducts([...products].sort((a, b) => a.amount - b.amount));
   };
 
   const interestRateFilterChangeHandler = (e) => {
     e.preventDefault();
     setInterestRateFilter(!interestRateFilter);
-    if (isSearched) {
-      interestRateFilter
-        ? dispatch(
-            searchedProductActions.updateSearedFilteredProduct(
-              [...filteredSearchedProduct].sort(
-                (a, b) => b.interestRate - a.interestRate
-              )
-            )
-          )
-        : dispatch(
-            searchedProductActions.updateSearedFilteredProduct(
-              [...filteredSearchedProduct].sort(
-                (a, b) => a.interestRate - b.interestRate
-              )
-            )
-          );
-    } else {
-      interestRateFilter
-        ? dispatch(
-            allProductActions.updateAllFilteredProduct(
-              [...filteredAllProducts].sort(
-                (a, b) => b.interestRate - a.interestRate
-              )
-            )
-          )
-        : dispatch(
-            allProductActions.updateAllFilteredProduct(
-              [...filteredAllProducts].sort(
-                (a, b) => a.interestRate - b.interestRate
-              )
-            )
-          );
-    }
+
+    interestRateFilter
+      ? setProducts(
+          [...products].sort((a, b) => b.interestRate - a.interestRate)
+        )
+      : setProducts(
+          [...products].sort((a, b) => a.interestRate - b.interestRate)
+        );
   };
 
   return (

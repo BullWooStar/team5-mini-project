@@ -2,7 +2,6 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchedProductActions } from "../../store/slices/searched-product-slice";
 
 import { getSearchedProduct } from "../../store/slices/searched-product-slice";
 
@@ -27,7 +26,7 @@ const SearchBar = styled.input`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
 
-function SearchInput() {
+function SearchInput({ setIsSearched }) {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState(null);
@@ -35,7 +34,7 @@ function SearchInput() {
   const searchHandler = (e) => {
     e.preventDefault();
     dispatch(getSearchedProduct(inputValue));
-    dispatch(searchedProductActions.changeIsSearched());
+    setIsSearched(true);
   };
 
   const inputValueHandler = (e) => {
