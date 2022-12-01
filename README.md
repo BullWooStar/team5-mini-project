@@ -1,8 +1,6 @@
 # 🤝 미니 프로젝트
 ### NEEDMONEY 💰 
 당신을 위한 대출상품 추천 앱 NEED MONEY
-#### 배포 주소
-https://fanciful-kheer-a71731.netlify.app/
 
 <br />
 
